@@ -34,9 +34,20 @@
 - **로그인/로그아웃 API 작성** - 담당자: 김수민
 	- ApiDog를 활용하여 테스트 완료
 	- References: [PR #6](https://github.com/Gamesung-Coding/a11y-market-server/pull/6)
+- **회원가입 기능 API 작성** - 담당자: 김수민
+	- 코드 작성 후 코드 리뷰 중
+	- References: [PR #66](https://github.com/Gamesung-Coding/a11y-market-server/pull/66)
 - **상품 목록 조회 및 조건/키워드 검색 API 작성** - 담당자: 신운용
 	- Seller 기능이 구현되지 않아 향후 리팩토링을 통해 기능 완성 예정
 	- References: [PR #65](https://github.com/Gamesung-Coding/a11y-market-server/pull/65)
+- **회원 정보 조회/수정, 배송지 동록 관리 API**- 담당자: 백여랑
+	- DB와 연동 완료
+	- API 테스트 완료
+	- References: [PR #64](https://github.com/Gamesung-Coding/a11y-market-server/pull/64)
+- **장바구니 기능 API** - 담당자: 장지훈
+	- 개인 테스트 완료
+	- 코드 리뷰 및 리팩토링 중
+	- References: [PR #63](https://github.com/Gamesung-Coding/a11y-market-server/pull/63)
 - **Frontend 디자인** - 담당자: 김수민, 백여랑, 신운용, 장지훈
 	- 디자인 시안 완성
 	- References: [별첨:5.기타자료 - Figma UI/UX Design](../5.기타자료)
@@ -44,9 +55,19 @@
 	- Vitest UI 및 test 커맨드 추가, 동작 테스트 완료
 	- 프레임워크 동작 테스트 완료
 	- GitHub Actions를 통한 CI/CD 환경 구축 완료
+	- GitHub에 Issues 추가하여 작업 관리
 
 ### 1.2. 차주 프로젝트 수행 계획
-- 작성 중
+- **Backend:** 
+	- 테스트 코드 작성 하여 동작 확인
+	- Seller 기능 API 개발 - 담당자: 신운용
+	- 더미데이터가 추가되었으므로, JOIN 연산 등을 통한 API 응답 결과 리팩토링
+- **Frontend:**
+	- 프론트 엔드 기본 요소 작성
+	- 메인 페이지
+	- 로그인/로그아웃 등
+	- 기본 이커머스 기능
+	- 각 API 기능 담당자가 관련 페이지 컴포넌트 작성
 
 ---
 ## 2. 강사님 피드백

@@ -8,3 +8,5 @@
 #### **[Week1](./2025-Nov-W1-journal.md)**
 
 #### **[Week2](./2025-Nov-W2-journal.md)**
+
+#### **[Week3](./2025-Nov-W3-journal.md)**

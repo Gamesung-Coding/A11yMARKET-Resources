@@ -90,5 +90,45 @@
   - References: [PR #54](https://github.com/Gamesung-Coding/a11y-market-web/pull/54), [PR #55](https://github.com/Gamesung-Coding/a11y-market-web/pull/55), [Issue #2](https://github.com/Gamesung-Coding/a11y-market-web/issues/2), [Issue #3](https://github.com/Gamesung-Coding/a11y-market-web/issues/3)
 - **이메일 로그인 페이지 작성** - 담당자: 김수민
   - 이메일 로그인 페이지를 작성
-  - References: [PR #56](https://github.com/Gamesung-Coding/a11y-market-web/pull/56), [Issue #6](ht다
-  - 기획단계에서 정리가 잘 되어 있는 부분이므로 기술적 표현만 리스크 없이 진행하면 좋을 것 같습니다
+  - References: [PR #56](https://github.com/Gamesung-Coding/a11y-market-web/pull/56), [Issue #6](https://github.com/Gamesung-Coding/a11y-market-web/issues/6), [요구 기능 명세서 #REQ-1](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
+- **장바구니 페이지** - 담당자: 장지훈
+  - 장바구니 페이지 UI 레이아웃 구현
+  - 판매자별 장바구니 카드 구조 추가
+  - 선택/전체 삭제 및 결제 정보 박스 추가
+  - 한계 금액 계산 로직 추가
+  - References: [PR #57](https://github.com/Gamesung-Coding/a11y-market-web/pull/57), [Issue #23](https://github.com/Gamesung-Coding/a11y-market-web/issues/23), [Issue #24](https://github.com/Gamesung-Coding/a11y-market-web/issues/24), [Issue #25](https://github.com/Gamesung-Coding/a11y-market-web/issues/25), [Issue #26](https://github.com/Gamesung-Coding/a11y-market-web/issues/26), [요구 기능 명세서 #REQ-26  #REQ-32  #REQ-20](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
+- **메인 페이지 추가** - 담당자: 안규태
+  - 메인 메이지 추가
+  - References: [PR #59](https://github.com/Gamesung-Coding/a11y-market-web/pull/59), [Issue #4](https://github.com/Gamesung-Coding/a11y-market-web/issues/4)
+- **회원 가입 페이지 추가** - 담당자: 김수민
+  - 이메일을 통한 회원 가입 페이지 추가
+  - References: [PR #60](https://github.com/Gamesung-Coding/a11y-market-web/pull/60), [Issue #10](https://github.com/Gamesung-Coding/a11y-market-web/issues/10), [요구 기능 명세서 #REQ-4](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
+- **배송지 관리 페이지 구현** - 담당자: 백여랑
+  - 배송지 추가 및 관리 페이지 구현
+  - 요소를 재사용가능한 컴포넌트로 구현
+  - References: [PR #61](https://github.com/Gamesung-Coding/a11y-market-web/pull/61), [Issue #21](https://github.com/Gamesung-Coding/a11y-market-web/issues/21), [요구 기능 명세서 #REQ-17](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
+- **상품 목록 조회 및 필터링 UI 구현** - 담당자: 장지훈
+  - 카테고리, 혜택, 판매자 등급, 가격에 따른 필터링 구현
+  - 상품 그리드 레이아웃 구성
+  - References: [PR #62](https://github.com/Gamesung-Coding/a11y-market-web/pull/62), [Issue #28](https://github.com/Gamesung-Coding/a11y-market-web/issues/28), [Issue #29](https://github.com/Gamesung-Coding/a11y-market-web/issues/29), [Issue #30](https://github.com/Gamesung-Coding/a11y-market-web/issues/30), [요구 기능 명세서 #REQ-33 #REQ-34 #REQ-35](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
+- **관리자 페이지 - 대시보드** - 담당자: 백여랑
+    - 내 상품 조회 엔드포인트 구현
+    - JWT 인증 방식을 사용
+    - References: [PR #64](https://github.com/Gamesung-Coding/a11y-market-web/pull/64), [Issue #46](https://github.com/Gamesung-Coding/a11y-market-web/issues/46)
+
+### 1.2. 차주 프로젝트 수행 계획
+
+- **Backend:**
+    - 작성한 코드 및 리팩토링된 코드에 맞추어 테스트 코드 작성
+    - 프론트엔드와의 연동 작업이 완료된 경우, 간편 로그인 구현
+    - 판매자 및 주문 기능 작업을 유동적으로 분배하여 개발예정
+- **Frontend:**
+    - 백엔드 Swagger 기반 명세서를 기반으로 연동 시작
+    - Figma에서 진행한 디자인을 기반으로 퍼블리싱
+    - 진행 상황에 따라 팀장이 주도적으로 작업을 분배하여 개발 예정
+
+---
+## 2. 강사님 피드백
+- 체계적으로 진행되고 있기 때문에 진척과 관련된 이슈는 없어보임
+- 접근성이 프로젝트의 핵심 주제 이므로 해당 부분이 잘 표현되도록 기획에서 정의한 접근성 관련 부분을 숙지해서 개발에 반영 할 것
+	- 기획단계에서 명확하게 정의 했으므로 기술적으로 리스크 없이 진행되도록 주의하면서 개발 진행하면 될 것 같음

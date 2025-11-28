@@ -26,6 +26,7 @@
 ### 1.1. 금주 프로젝트 수행 내용
 
 - **QA** - Reviewer: 안규태
+
   - 각 PR의 코드 리뷰 및 코멘트
 
 - **응답 결과 검증** - 담당자: 안규태
@@ -67,17 +68,17 @@
   - 구현된 기능 별 기능 오류 또는 로직의 논리적 문제 개선
   - References: [PR #81](https://github.com/Gamesung-Coding/a11y-market-server/pull/81), [Issue #76](https://github.com/Gamesung-Coding/a11y-market-server/issues/76)
 - **Swagger 설정 및 API 명세서 생성** - 담당자: 안규태
-    - Swagger를 통해 현재 개발 완료된 API 엔드포인트를 명시하고, 테스트 할 수 있도록 구성
-    - 각 기능 별 요청/응답 객체 구조 확인가능
-    - References: [Commit #59f7aac](https://github.com/Gamesung-Coding/a11y-market-server/commit/59f7aaccbb1cb720a2ceefdc7846d53905ebefff), [Commit #dfe7d2b](https://github.com/Gamesung-Coding/a11y-market-server/commit/dfe7d2b62526f8a496e1bfbb05cdf779f0804240)
+  - Swagger를 통해 현재 개발 완료된 API 엔드포인트를 명시하고, 테스트 할 수 있도록 구성
+  - 각 기능 별 요청/응답 객체 구조 확인가능
+  - References: [Commit #59f7aac](https://github.com/Gamesung-Coding/a11y-market-server/commit/59f7aaccbb1cb720a2ceefdc7846d53905ebefff), [Commit #dfe7d2b](https://github.com/Gamesung-Coding/a11y-market-server/commit/dfe7d2b62526f8a496e1bfbb05cdf779f0804240)
 - **판매자 기능 - 내 상품 조회** - 담당자: 신운용
-    - 내 상품 조회 엔드포인트 구현
-    - JWT 인증 방식을 사용
-    - References: [PR #82](https://github.com/Gamesung-Coding/a11y-market-server/pull/82), [Issue #47](https://github.com/Gamesung-Coding/a11y-market-server/issues/47), [요구 기능 명세서 #REQ-46](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
+  - 내 상품 조회 엔드포인트 구현
+  - JWT 인증 방식을 사용
+  - References: [PR #82](https://github.com/Gamesung-Coding/a11y-market-server/pull/82), [Issue #47](https://github.com/Gamesung-Coding/a11y-market-server/issues/47), [요구 기능 명세서 #REQ-46](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
 - **판매자 기능 - 내 상품 수정 요청** - 담당자: 신운용
-    - 내 상품 수정 요청(변경 내용을 관리자가 승인해야 함)하는 기능 API 구현
-    - JWT 인증 방식을 사용
-    - References: [PR #83](https://github.com/Gamesung-Coding/a11y-market-server/pull/83), [Issue #40](https://github.com/Gamesung-Coding/a11y-market-server/issues/40), [요구 기능 명세서 #REQ-46](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
+  - 내 상품 수정 요청(변경 내용을 관리자가 승인해야 함)하는 기능 API 구현
+  - JWT 인증 방식을 사용
+  - References: [PR #83](https://github.com/Gamesung-Coding/a11y-market-server/pull/83), [Issue #40](https://github.com/Gamesung-Coding/a11y-market-server/issues/40), [요구 기능 명세서 #REQ-46](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
 
 #### 프론트엔드
 
@@ -96,7 +97,7 @@
   - 판매자별 장바구니 카드 구조 추가
   - 선택/전체 삭제 및 결제 정보 박스 추가
   - 한계 금액 계산 로직 추가
-  - References: [PR #57](https://github.com/Gamesung-Coding/a11y-market-web/pull/57), [Issue #23](https://github.com/Gamesung-Coding/a11y-market-web/issues/23), [Issue #24](https://github.com/Gamesung-Coding/a11y-market-web/issues/24), [Issue #25](https://github.com/Gamesung-Coding/a11y-market-web/issues/25), [Issue #26](https://github.com/Gamesung-Coding/a11y-market-web/issues/26), [요구 기능 명세서 #REQ-26  #REQ-32  #REQ-20](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
+  - References: [PR #57](https://github.com/Gamesung-Coding/a11y-market-web/pull/57), [Issue #23](https://github.com/Gamesung-Coding/a11y-market-web/issues/23), [Issue #24](https://github.com/Gamesung-Coding/a11y-market-web/issues/24), [Issue #25](https://github.com/Gamesung-Coding/a11y-market-web/issues/25), [Issue #26](https://github.com/Gamesung-Coding/a11y-market-web/issues/26), [요구 기능 명세서 #REQ-26 #REQ-32 #REQ-20](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
 - **메인 페이지 추가** - 담당자: 안규태
   - 메인 메이지 추가
   - References: [PR #59](https://github.com/Gamesung-Coding/a11y-market-web/pull/59), [Issue #4](https://github.com/Gamesung-Coding/a11y-market-web/issues/4)
@@ -112,23 +113,25 @@
   - 상품 그리드 레이아웃 구성
   - References: [PR #62](https://github.com/Gamesung-Coding/a11y-market-web/pull/62), [Issue #28](https://github.com/Gamesung-Coding/a11y-market-web/issues/28), [Issue #29](https://github.com/Gamesung-Coding/a11y-market-web/issues/29), [Issue #30](https://github.com/Gamesung-Coding/a11y-market-web/issues/30), [요구 기능 명세서 #REQ-33 #REQ-34 #REQ-35](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
 - **관리자 페이지 - 대시보드** - 담당자: 백여랑
-    - 내 상품 조회 엔드포인트 구현
-    - JWT 인증 방식을 사용
-    - References: [PR #64](https://github.com/Gamesung-Coding/a11y-market-web/pull/64), [Issue #46](https://github.com/Gamesung-Coding/a11y-market-web/issues/46)
+  - 내 상품 조회 엔드포인트 구현
+  - JWT 인증 방식을 사용
+  - References: [PR #64](https://github.com/Gamesung-Coding/a11y-market-web/pull/64), [Issue #46](https://github.com/Gamesung-Coding/a11y-market-web/issues/46)
 
 ### 1.2. 차주 프로젝트 수행 계획
 
 - **Backend:**
-    - 작성한 코드 및 리팩토링된 코드에 맞추어 테스트 코드 작성
-    - 프론트엔드와의 연동 작업이 완료된 경우, 간편 로그인 구현
-    - 판매자 및 주문 기능 작업을 유동적으로 분배하여 개발예정
+  - 작성한 코드 및 리팩토링된 코드에 맞추어 테스트 코드 작성
+  - 프론트엔드와의 연동 작업이 완료된 경우, 간편 로그인 구현
+  - 판매자 및 주문 기능 작업을 유동적으로 분배하여 개발예정
 - **Frontend:**
-    - 백엔드 Swagger 기반 명세서를 기반으로 연동 시작
-    - Figma에서 진행한 디자인을 기반으로 퍼블리싱
-    - 진행 상황에 따라 팀장이 주도적으로 작업을 분배하여 개발 예정
+  - 백엔드 Swagger 기반 명세서를 기반으로 연동 시작
+  - Figma에서 진행한 디자인을 기반으로 퍼블리싱
+  - 진행 상황에 따라 팀장이 주도적으로 작업을 분배하여 개발 예정
 
 ---
+
 ## 2. 강사님 피드백
+
 - 체계적으로 진행되고 있기 때문에 진척과 관련된 이슈는 없어보임
 - 접근성이 프로젝트의 핵심 주제 이므로 해당 부분이 잘 표현되도록 기획에서 정의한 접근성 관련 부분을 숙지해서 개발에 반영 할 것
-	- 기획단계에서 명확하게 정의 했으므로 기술적으로 리스크 없이 진행되도록 주의하면서 개발 진행하면 될 것 같음
+  - 기획단계에서 명확하게 정의 했으므로 기술적으로 리스크 없이 진행되도록 주의하면서 개발 진행하면 될 것 같음

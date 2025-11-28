@@ -1,4 +1,5 @@
 # [11월 2주차 프로젝트 수행 일지]
+
 <div align="center">
   <table width="100%">
     <tbody>
@@ -25,55 +26,57 @@
 ### 1.1. 금주 프로젝트 수행 내용
 
 - **QA** - Reviewer: 안규태
-	- 작주 수행한 PR 코드 리뷰 및 코멘트
+  - 작주 수행한 PR 코드 리뷰 및 코멘트
 - **테이블 스키마 수정 및 SQL 작성** - 담당자: 안규태, 김수민
-	- 테이블 스키마 SQL 작성 및 더미데이터 작성 완료
-	- 잘못된 스키마(ERD) 수정
-	- 뷰테이블(`seller_sales`) 작성
-	- References: [PR #7](https://github.com/Gamesung-Coding/a11y-market-server/pull/7), [Commit(develop) 56e5c5e](https://github.com/Gamesung-Coding/a11y-market-server/commit/56e5c5e23561fc0af72cf0c22177c57b217a8432)
+  - 테이블 스키마 SQL 작성 및 더미데이터 작성 완료
+  - 잘못된 스키마(ERD) 수정
+  - 뷰테이블(`seller_sales`) 작성
+  - References: [PR #7](https://github.com/Gamesung-Coding/a11y-market-server/pull/7), [Commit(develop) 56e5c5e](https://github.com/Gamesung-Coding/a11y-market-server/commit/56e5c5e23561fc0af72cf0c22177c57b217a8432)
 - **로그인/로그아웃 API 작성** - 담당자: 김수민
-	- ApiDog를 활용하여 테스트 완료
-	- References: [PR #6](https://github.com/Gamesung-Coding/a11y-market-server/pull/6)
+  - ApiDog를 활용하여 테스트 완료
+  - References: [PR #6](https://github.com/Gamesung-Coding/a11y-market-server/pull/6)
 - **회원가입 기능 API 작성** - 담당자: 김수민
-	- 코드 작성 후 코드 리뷰 중
-	- References: [PR #66](https://github.com/Gamesung-Coding/a11y-market-server/pull/66)
+  - 코드 작성 후 코드 리뷰 중
+  - References: [PR #66](https://github.com/Gamesung-Coding/a11y-market-server/pull/66)
 - **상품 목록 조회 및 조건/키워드 검색 API 작성** - 담당자: 신운용
-	- Seller 기능이 구현되지 않아 향후 리팩토링을 통해 기능 완성 예정
-	- References: [PR #65](https://github.com/Gamesung-Coding/a11y-market-server/pull/65)
+  - Seller 기능이 구현되지 않아 향후 리팩토링을 통해 기능 완성 예정
+  - References: [PR #65](https://github.com/Gamesung-Coding/a11y-market-server/pull/65)
 - **회원 정보 조회/수정, 배송지 동록 관리 API**- 담당자: 백여랑
-	- DB와 연동 완료
-	- API 테스트 완료
-	- References: [PR #64](https://github.com/Gamesung-Coding/a11y-market-server/pull/64)
+  - DB와 연동 완료
+  - API 테스트 완료
+  - References: [PR #64](https://github.com/Gamesung-Coding/a11y-market-server/pull/64)
 - **장바구니 기능 API** - 담당자: 장지훈
-	- 개인 테스트 완료
-	- 코드 리뷰 및 리팩토링 중
-	- References: [PR #63](https://github.com/Gamesung-Coding/a11y-market-server/pull/63)
+  - 개인 테스트 완료
+  - 코드 리뷰 및 리팩토링 중
+  - References: [PR #63](https://github.com/Gamesung-Coding/a11y-market-server/pull/63)
 - **Frontend 디자인** - 담당자: 김수민, 백여랑, 신운용, 장지훈
-	- 디자인 시안 완성
-	- References: [별첨:5.기타자료 - Figma UI/UX Design](../5.기타자료)
+  - 디자인 시안 완성
+  - References: [별첨:5.기타자료 - Figma UI/UX Design](../5.기타자료)
 - **Frontend 개발 환경 검토** - 담당자: 안규태
-	- Vitest UI 및 test 커맨드 추가, 동작 테스트 완료
-	- 프레임워크 동작 테스트 완료
-	- GitHub Actions를 통한 CI/CD 환경 구축 완료
-	- GitHub에 Issues 추가하여 작업 관리
+  - Vitest UI 및 test 커맨드 추가, 동작 테스트 완료
+  - 프레임워크 동작 테스트 완료
+  - GitHub Actions를 통한 CI/CD 환경 구축 완료
+  - GitHub에 Issues 추가하여 작업 관리
 
 ### 1.2. 차주 프로젝트 수행 계획
-- **Backend:** 
-	- 테스트 코드 작성 하여 동작 확인
-	- Seller 기능 API 개발 - 담당자: 신운용
-	- 더미데이터가 추가되었으므로, JOIN 연산 등을 통한 API 응답 결과 리팩토링
+
+- **Backend:**
+  - 테스트 코드 작성 하여 동작 확인
+  - Seller 기능 API 개발 - 담당자: 신운용
+  - 더미데이터가 추가되었으므로, JOIN 연산 등을 통한 API 응답 결과 리팩토링
 - **Frontend:**
-	- 프론트 엔드 기본 요소 작성
-	- 메인 페이지
-	- 로그인/로그아웃 등
-	- 기본 이커머스 기능
-	- 각 API 기능 담당자가 관련 페이지 컴포넌트 작성
+  - 프론트 엔드 기본 요소 작성
+  - 메인 페이지
+  - 로그인/로그아웃 등
+  - 기본 이커머스 기능
+  - 각 API 기능 담당자가 관련 페이지 컴포넌트 작성
 
 ---
+
 ## 2. 강사님 피드백
--  일정은 적절하게 잘 진행하고 있는 것 같습니다다
--  개발을 진행 할 때 작성한 코드에 대해 주석을 추가하는걸 권장 합니다
-	-  주석을 이용하면 현재 코드가 왜 필요한지를 설명하거나 불필요한 코드여서 배제 시킬 수 있습니다
--  코드에서 정의가 필요할 때는 팀에서 작성한 명세를 반드시 확인해야 합니다
-	- 특히 우리팀처럼 많은 내용을 먼저 기획한 경우에는 규칙을 정해놓은 상태이므로 규칙을 확실히 따라서 진행해야 충돌이 없습니다
- 
+
+- 일정은 적절하게 잘 진행하고 있는 것 같습니다다
+- 개발을 진행 할 때 작성한 코드에 대해 주석을 추가하는걸 권장 합니다
+  - 주석을 이용하면 현재 코드가 왜 필요한지를 설명하거나 불필요한 코드여서 배제 시킬 수 있습니다
+- 코드에서 정의가 필요할 때는 팀에서 작성한 명세를 반드시 확인해야 합니다
+  - 특히 우리팀처럼 많은 내용을 먼저 기획한 경우에는 규칙을 정해놓은 상태이므로 규칙을 확실히 따라서 진행해야 충돌이 없습니다

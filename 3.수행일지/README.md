@@ -15,3 +15,9 @@
 #### **[Week3](./2025-Nov-W3-journal.md)**
 
 #### **[Week4](./2025-Nov-W4-journal.md)**
+
+---
+
+### 2025. Dec.
+
+#### **[Week1](./2025-Dec-W1-journal.md)**

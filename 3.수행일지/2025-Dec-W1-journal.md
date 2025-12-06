@@ -72,9 +72,15 @@
   - 이메일, 닉네임, 휴대폰 번호 등 DB에 등록된 데이타와의 중복 여부를 확인하도록 구성
   - References: PR [&#35;113](https://github.com/Gamesung-Coding/a11y-market-server/pull/113)
 
-- **메인 페이지의 상품 조회 시 필요한 뷰 및 엔드포인트 추가** = 담당자: 안규태
+- **메인 페이지의 상품 조회 시 필요한 뷰 및 엔드포인트 추가** - 담당자: 안규태
+
   - 인기상품과 같은 상품 리스트 조회 시 필요한 뷰 테이블 추가
   - References: PR [&#35;114](https://github.com/Gamesung-Coding/a11y-market-server/pull/114)
+
+- **상품 업로드 시 상품 요약 기능 추가** - 담당자: 안규태
+  - 상품 업로드 시, 설명 사진을 기반으로 AI가 제품의 정보를 요약하는 기능 추가
+  - 기타 엔드포인트 추가 및 코드 리팩토링
+  - References: PR [&#35;115](https://github.com/Gamesung-Coding/a11y-market-server/pull/115)
 
 #### 프론트엔드
 
@@ -151,6 +157,12 @@
   - 회원 가입 시 회원 가입 폼을 간편 회원 가입 UI와 동일하게 작성
   - 한번에 하나의 정보만 입력받아 접근성 있게 구현
   - References: PR [&#35;98](https://github.com/Gamesung-Coding/a11y-market-web/pull/98)
+
+- **메인페이지, 인증 기능 페이지, 상품 등록 페이지 리팩토링 진행 중** - 담당자: 안규태
+
+- API 연동 및 잘못된 레이아웃 수정
+- 필요한 경우 API 재설계
+- References: PR [&#35;98](https://github.com.Gamesung-Coding/a11y-market-web/pull/98) [&#35;100](https://github.com.Gamesung-Coding/a11y-market-web/pull/100) [&#35;101](https://github.com.Gamesung-Coding/a11y-market-web/pull/101)
 
 ### 1.2. 차주 프로젝트 수행 계획
 

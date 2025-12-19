@@ -2,20 +2,32 @@
 
 ## 1. Use-Case Diagram
 
-- Document: [Outline - UsecaseDiagram](https://docs.bluenyang.kr/s/gamesung-coding-document/doc/7jyg7iqk7lya7j207iqkioulpoydtoywtoq3uoueqa-LWFBx1vrgm)
+![Usecase Diagram Dark](./diagrams/Scenarios-Dark.png)
+
 ## 2. E-R Diagram
 
-- Document: [Outline - ER Diagram](https://docs.bluenyang.kr/s/gamesung-coding-document/doc/e-r-diagram-s1EUre06Lt)
+![ERD-Dark](./diagrams/ERDiagram-Dark.png)
 
 ## 3. Component Diagram
 
-- Document: [Outline - Component Diagram](https://docs.bluenyang.kr/s/gamesung-coding-document/doc/component-diagram-eyZZxXJ9nR) 
+![Component Diagram](./diagrams/ComponentDiagram.png)
 
-## 4. Deployment Diagram
+## 4. Hybrid View
 
-- Document: [Outline - Deployment Diagram](https://docs.bluenyang.kr/s/gamesung-coding-document/doc/hybridprocessphysic-view-VywbGeHDYS)
+![Hybrid View Dark](./diagrams/Hybrid%20View-Dark.png)
 
-## 5. Package Diagram
+## 5. System Architecture
 
-- Document: [Outline - Package Diagram](https://docs.bluenyang.kr/s/gamesung-coding-document/doc/package-diagram-Sf8HdtLCAp)
+![Architecture](./diagrams/architecture-dark.png)
 
+## 6. UI FlowChart
+
+![UI Flowchart](./diagrams/FlowChart.jpg)
+
+## 7. Backend Structrues
+
+![Spring Structrue](./diagrams/SpringArchitectureDark.png)
+
+## 8. CI/CD Pipeline
+
+![cicd-pipeline](./diagrams/cicd_bg_w.png)

@@ -6,7 +6,7 @@
 
 ## [4. Scenario](./docs/scenario.md)
 
-## [5. API Endpoint List (Outline)](https://docs.bluenyang.kr/s/gamesung-coding-document/doc/api-pePFtS68k7)
+## [5. API Endpoint List](./docs/api-docs.md)
 
 ## [6. UI Flow Chart](./diagrams.md/#6-ui-flowchart)
 

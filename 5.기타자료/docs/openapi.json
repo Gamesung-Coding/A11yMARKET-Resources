@@ -1,0 +1,4924 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "A11yMARKET Server API",
+    "description": "A11yMARKET Server API Specification Document",
+    "version": "v0.0.1"
+  },
+  "servers": [
+    { "url": "http://localhost:8080", "description": "Generated server url" }
+  ],
+  "security": [{ "JWT": [] }],
+  "paths": {
+    "/api/v1/users/me/address/{addressId}": {
+      "put": {
+        "tags": ["address-controller"],
+        "operationId": "updateAddress",
+        "parameters": [
+          {
+            "name": "addressId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AddressRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/AddressResponse" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["address-controller"],
+        "operationId": "deleteAddress",
+        "parameters": [
+          {
+            "name": "addressId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": { "description": "No Content" }
+        }
+      }
+    },
+    "/api/v1/users/me/a11y/profiles/{profileId}": {
+      "put": {
+        "tags": ["user-a-11y-profile-controller"],
+        "operationId": "updateProfile",
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserA11yProfileReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": { "description": "No Content" }
+        }
+      },
+      "delete": {
+        "tags": ["user-a-11y-profile-controller"],
+        "operationId": "deleteProfile",
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": { "description": "No Content" }
+        }
+      }
+    },
+    "/api/v1/seller/products/{productId}": {
+      "put": {
+        "tags": ["seller-controller"],
+        "operationId": "updateProduct",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SellerProductUpdateRequest"
+                  },
+                  "images": {
+                    "type": "array",
+                    "items": { "type": "string", "format": "binary" }
+                  }
+                },
+                "required": ["data"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": { "schema": { "$ref": "#/components/schemas/ProductDTO" } }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["seller-controller"],
+        "operationId": "deleteProduct",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": { "description": "No Content" }
+        }
+      }
+    },
+    "/api/v1/seller/me": {
+      "put": {
+        "tags": ["seller-controller"],
+        "operationId": "updateSellerInfo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SellerUpdateRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/SellerInfoResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/orders/pre-check": {
+      "post": {
+        "tags": ["order-controller"],
+        "operationId": "getOrderSheet",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrderSheetRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/OrderSheetResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/me/orders/items/confirm": {
+      "post": {
+        "tags": ["order-controller"],
+        "operationId": "confirmOrderItems",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrderConfirmRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": { "description": "No Content" }
+        }
+      }
+    },
+    "/api/v1/users/me/orders/cancel-request": {
+      "post": {
+        "tags": ["order-controller"],
+        "operationId": "cancelOrderItems",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrderCancelRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content",
+            "content": { "*/*": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/users/me/address": {
+      "get": {
+        "tags": ["address-controller"],
+        "operationId": "getAddressList",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/AddressResponse" }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["address-controller"],
+        "operationId": "insertAddress",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/AddressRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/AddressResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/me/a11y/profiles": {
+      "get": {
+        "tags": ["user-a-11y-profile-controller"],
+        "operationId": "getMyProfiles",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserA11yProfileResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["user-a-11y-profile-controller"],
+        "operationId": "createProfile",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserA11yProfileReq" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserA11yProfileResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/products": {
+      "get": {
+        "tags": ["seller-controller"],
+        "operationId": "getMyProducts",
+        "parameters": [
+          {
+            "name": "req",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/SellerInquireProductRequest"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductInquireResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["seller-controller"],
+        "operationId": "registerProduct",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/SellerProductRegisterRequest"
+                  },
+                  "images": {
+                    "type": "array",
+                    "items": { "type": "string", "format": "binary" }
+                  }
+                },
+                "required": ["data"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDetailResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/claims/{claimId}/approve": {
+      "post": {
+        "tags": ["seller-controller"],
+        "operationId": "processOrderClaim",
+        "parameters": [
+          {
+            "name": "claimId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SellerOrderClaimProcessRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": { "description": "OK" }
+        }
+      }
+    },
+    "/api/v1/seller/apply": {
+      "post": {
+        "tags": ["seller-controller"],
+        "operationId": "applySeller",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/SellerApplyRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/SellerApplyResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/payments/verify": {
+      "post": {
+        "tags": ["order-controller"],
+        "operationId": "verifyPayment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PaymentVerifyRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentVerifyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/orders": {
+      "post": {
+        "tags": ["order-controller"],
+        "operationId": "createOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/OrderCreateRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/OrderResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/orders/pre-check": {
+      "post": {
+        "tags": ["order-controller"],
+        "operationId": "preCheck",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": { "description": "OK" }
+        },
+        "deprecated": true
+      }
+    },
+    "/api/v1/cart/me/items": {
+      "post": {
+        "tags": ["cart-controller"],
+        "operationId": "addItem",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CartAddRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartItemUpdatedResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["cart-controller"],
+        "operationId": "deleteItems",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CartItemDeleteRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": { "description": "No Content" }
+        }
+      }
+    },
+    "/api/v1/auth/refresh": {
+      "post": {
+        "tags": ["auth-controller"],
+        "operationId": "refreshToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RefreshRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/JwtResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "tags": ["auth-controller"],
+        "operationId": "logout",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content",
+            "content": { "*/*": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "tags": ["auth-controller"],
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LoginRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/LoginResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/login-refresh": {
+      "post": {
+        "tags": ["auth-controller"],
+        "operationId": "loginRefresh",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RefreshRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/LoginResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/kakao-join": {
+      "post": {
+        "tags": ["auth-controller"],
+        "operationId": "kakaoJoin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/KakaoSignUpRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/UserResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/join": {
+      "post": {
+        "tags": ["auth-controller"],
+        "operationId": "join",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/JoinRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/UserResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/me": {
+      "get": {
+        "tags": ["user-controller"],
+        "operationId": "getUserInfo",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/UserResponse" }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["user-controller"],
+        "operationId": "deleteUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserDeleteRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": { "description": "OK" }
+        }
+      },
+      "patch": {
+        "tags": ["user-controller"],
+        "operationId": "updateUserInfo",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/UserUpdateRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/UserResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/me/default-address": {
+      "get": {
+        "tags": ["address-controller"],
+        "operationId": "getDefaultAddress",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/AddressResponse" }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["address-controller"],
+        "operationId": "updateDefaultAddress",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/DefaultAddressRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": { "*/*": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/products/{productId}/stock": {
+      "patch": {
+        "tags": ["seller-controller"],
+        "operationId": "updateProductStock",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SellerProductStockUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": { "schema": { "$ref": "#/components/schemas/ProductDTO" } }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/orders/items/{orderItemId}/status": {
+      "patch": {
+        "tags": ["seller-controller"],
+        "operationId": "updateOrderStatus",
+        "parameters": [
+          {
+            "name": "orderItemId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SellerOrderItemsStatusUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": { "description": "No Content" }
+        }
+      }
+    },
+    "/api/v1/cart/me/items/{cartItemId}": {
+      "patch": {
+        "tags": ["cart-controller"],
+        "operationId": "updateQuantity",
+        "parameters": [
+          {
+            "name": "cartItemId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CartQtyUpdateRequest" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartItemUpdatedResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/users/{userId}/permission": {
+      "patch": {
+        "tags": ["admin-user-manage-controller"],
+        "operationId": "changeUserPermission",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["USER", "SELLER", "ADMIN", "TEMP"]
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/UserResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/sellers/{sellerId}": {
+      "get": {
+        "tags": ["admin-seller-manage-controller"],
+        "operationId": "getSellerProfile",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellerDetailResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": ["admin-seller-manage-controller"],
+        "operationId": "updateSellerInfo_1",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdminSellerUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content",
+            "content": { "*/*": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/sellers/{sellerId}/status": {
+      "patch": {
+        "tags": ["admin-seller-manage-controller"],
+        "operationId": "changeSellerStatus",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["PENDING", "APPROVED", "REJECTED"]
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "204": {
+            "description": "No Content",
+            "content": { "*/*": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/products/{productId}/status": {
+      "patch": {
+        "tags": ["admin-product-manage-controller"],
+        "operationId": "changeProductStatus",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["PENDING", "APPROVED", "REJECTED", "PAUSED", "DELETED"]
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": { "*/*": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/orders/items/{orderItemId}": {
+      "patch": {
+        "tags": ["admin-order-manage-controller"],
+        "operationId": "changeOrderStatus",
+        "parameters": [
+          {
+            "name": "orderItemId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ORDERED",
+                "PAID",
+                "REJECTED",
+                "ACCEPTED",
+                "SHIPPING",
+                "SHIPPED",
+                "CONFIRMED",
+                "CANCEL_PENDING",
+                "CANCELED",
+                "CANCEL_REJECTED",
+                "RETURN_PENDING",
+                "RETURNED",
+                "RETURN_REJECTED"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": { "*/*": { "schema": { "type": "string" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/users/me/orders": {
+      "get": {
+        "tags": ["order-controller"],
+        "operationId": "getMyOrders",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/OrderResponse" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/me/orders/{orderItemId}": {
+      "get": {
+        "tags": ["order-controller"],
+        "operationId": "getMyOrderDetail",
+        "parameters": [
+          {
+            "name": "orderItemId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/OrderDetailResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/orders/summary": {
+      "get": {
+        "tags": ["seller-controller"],
+        "operationId": "getOrderSummary",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellerOrderSummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/orders/items": {
+      "get": {
+        "tags": ["seller-controller"],
+        "operationId": "getReceivedOrders",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "format": "int32" }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "format": "int32" }
+          },
+          {
+            "name": "orderItemStatus",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "ORDERED",
+                "PAID",
+                "REJECTED",
+                "ACCEPTED",
+                "SHIPPING",
+                "SHIPPED",
+                "CONFIRMED",
+                "CANCEL_PENDING",
+                "CANCELED",
+                "CANCEL_REJECTED",
+                "RETURN_PENDING",
+                "RETURNED",
+                "RETURN_REJECTED"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellerOrderInquireResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/info/{sellerId}": {
+      "get": {
+        "tags": ["seller-controller"],
+        "operationId": "getSellerInfo",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/SellerInfoResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/dashboard/top-products": {
+      "get": {
+        "tags": ["seller-controller"],
+        "operationId": "getTopProducts",
+        "parameters": [
+          {
+            "name": "topN",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "integer", "format": "int32" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SellerTopProductResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/dashboard/stats": {
+      "get": {
+        "tags": ["seller-controller"],
+        "operationId": "getDashboardStats",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellerDashboardResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/dashboard/recent-orders": {
+      "get": {
+        "tags": ["seller-controller"],
+        "operationId": "getRecentOrders",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "format": "int32", "default": 0 }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "format": "int32", "default": 10 }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SellerOrderItemResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/dashboard/daily-revenue": {
+      "get": {
+        "tags": ["seller-controller"],
+        "operationId": "getDailyRevenue",
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "format": "int32", "default": 2025 }
+          },
+          {
+            "name": "month",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "format": "int32", "default": 12 }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/DailyRevenueDto" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/seller/claims": {
+      "get": {
+        "tags": ["seller-controller"],
+        "operationId": "getOrderClaims",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SellerOrderItemResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products": {
+      "get": {
+        "tags": ["product-controller"],
+        "operationId": "getProducts",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "certified",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "boolean" }
+          },
+          {
+            "name": "grade",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "categoryId",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "array", "items": { "type": "string" } }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/ProductResponse" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/products/{productId}": {
+      "get": {
+        "tags": ["product-controller"],
+        "operationId": "getProductDetail",
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductDetailResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/main/products/populars": {
+      "get": {
+        "tags": ["main-controller"],
+        "operationId": "getPopularProducts",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MonthlyPopularProduct"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/main/products/categories": {
+      "get": {
+        "tags": ["main-controller"],
+        "operationId": "getCategories",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CategoryRecommendResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/main/events": {
+      "get": {
+        "tags": ["main-controller"],
+        "operationId": "getEvents",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/EventResponse" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/categories": {
+      "get": {
+        "tags": ["category-controller"],
+        "operationId": "getAllCategories",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/CategoryResponse" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cart/me": {
+      "get": {
+        "tags": ["cart-controller"],
+        "operationId": "getCart",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartItemListResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/cart/me/items/count": {
+      "get": {
+        "tags": ["cart-controller"],
+        "operationId": "getCartItemCount",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartItemCountResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/me/info": {
+      "get": {
+        "tags": ["auth-controller"],
+        "operationId": "getLoginUserInfo",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/LoginResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/check/phone": {
+      "get": {
+        "tags": ["auth-controller"],
+        "operationId": "checkPhone",
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/CheckExistsResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/check/nickname": {
+      "get": {
+        "tags": ["auth-controller"],
+        "operationId": "checkNickname",
+        "parameters": [
+          {
+            "name": "nickname",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/CheckExistsResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/check/email": {
+      "get": {
+        "tags": ["auth-controller"],
+        "operationId": "checkEmail",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/CheckExistsResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/users": {
+      "get": {
+        "tags": ["admin-user-manage-controller"],
+        "operationId": "inquireUsers",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/UserAdminResponse" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/sellers": {
+      "get": {
+        "tags": ["admin-seller-manage-controller"],
+        "operationId": "getAllSellerProfiles",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SellerProfileResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/sellers/pending": {
+      "get": {
+        "tags": ["admin-seller-manage-controller"],
+        "operationId": "inquirePendingSellers",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SellerApplyResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/products": {
+      "get": {
+        "tags": ["admin-product-manage-controller"],
+        "operationId": "inquireAllProducts",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["PENDING", "APPROVED", "REJECTED", "PAUSED", "DELETED"]
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "format": "int32", "default": 1 }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "format": "int32", "default": 20 }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminProductsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/products/pending": {
+      "get": {
+        "tags": ["admin-product-manage-controller"],
+        "operationId": "inquirePendingProducts",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProductAdminInquireResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/orders": {
+      "get": {
+        "tags": ["admin-order-manage-controller"],
+        "operationId": "inquireAllOrders",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "query",
+            "required": true,
+            "schema": { "$ref": "#/components/schemas/AdminOrderSearchRequest" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/AdminOrderResponse" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/orders/{orderId}": {
+      "get": {
+        "tags": ["admin-order-manage-controller"],
+        "operationId": "inquireOrderDetails",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/OrderDetailResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/admin/dashboard/stats": {
+      "get": {
+        "tags": ["admin-dashboard-controller"],
+        "operationId": "getAdminDashboardStats",
+        "responses": {
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "oneOf": [
+                    { "$ref": "#/components/schemas/RestErrorResponse" },
+                    { "$ref": "#/components/schemas/LoginErrResponse" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/RestErrorResponse" }
+              }
+            }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": { "$ref": "#/components/schemas/AdminDashboardStats" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginErrResponse": {
+        "type": "object",
+        "properties": { "message": { "type": "string" } }
+      },
+      "RestErrorResponse": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "integer", "format": "int32" },
+          "error": {
+            "type": "string",
+            "enum": [
+              "USER_NOT_FOUND",
+              "DATA_NOT_FOUND",
+              "DUPLICATED_DATA",
+              "INVALID_REQUEST"
+            ]
+          },
+          "message": { "type": "string" }
+        }
+      },
+      "AddressRequest": {
+        "type": "object",
+        "properties": {
+          "addressName": { "type": "string", "maxLength": 100, "minLength": 0 },
+          "receiverName": { "type": "string", "maxLength": 30, "minLength": 2 },
+          "receiverPhone": { "type": "string", "pattern": "^\\d+$" },
+          "receiverZipcode": { "type": "string", "pattern": "^\\d{5}$" },
+          "receiverAddr1": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 0
+          },
+          "receiverAddr2": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 0
+          },
+          "isDefault": { "type": "boolean" }
+        }
+      },
+      "AddressResponse": {
+        "type": "object",
+        "properties": {
+          "addressId": { "type": "string", "format": "uuid" },
+          "userId": { "type": "string", "format": "uuid" },
+          "addressName": { "type": "string" },
+          "receiverName": { "type": "string" },
+          "receiverPhone": { "type": "string" },
+          "receiverZipcode": { "type": "string" },
+          "receiverAddr1": { "type": "string" },
+          "receiverAddr2": { "type": "string" },
+          "isDefault": { "type": "boolean" },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "UserA11yProfileReq": {
+        "type": "object",
+        "properties": {
+          "profileName": { "type": "string", "maxLength": 50, "minLength": 0 },
+          "description": { "type": "string", "maxLength": 200, "minLength": 0 },
+          "contrastLevel": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 3,
+            "minimum": 0
+          },
+          "textSizeLevel": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2,
+            "minimum": 0
+          },
+          "textSpacingLevel": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2,
+            "minimum": 0
+          },
+          "lineHeightLevel": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 2,
+            "minimum": 0
+          },
+          "textAlign": { "type": "string", "pattern": "^(left|center|right)$" },
+          "screenReader": { "type": "boolean" },
+          "smartContrast": { "type": "boolean" },
+          "highlightLinks": { "type": "boolean" },
+          "cursorHighlight": { "type": "boolean" }
+        },
+        "required": ["profileName"]
+      },
+      "ImageMetadata": {
+        "type": "object",
+        "properties": {
+          "originalFileName": { "type": "string", "minLength": 1 },
+          "altText": { "type": "string" },
+          "sequence": { "type": "integer", "format": "int32", "minimum": 0 },
+          "imageId": { "type": "string", "format": "uuid" },
+          "isNew": { "type": "boolean" }
+        },
+        "required": ["originalFileName", "sequence"]
+      },
+      "SellerProductUpdateRequest": {
+        "type": "object",
+        "description": "Product registration data",
+        "properties": {
+          "productName": { "type": "string", "minLength": 1 },
+          "productDescription": { "type": "string", "minLength": 1 },
+          "categoryId": { "type": "string", "minLength": 1 },
+          "productPrice": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "productStock": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "productStatus": {
+            "type": "string",
+            "enum": ["PENDING", "APPROVED", "REJECTED", "PAUSED", "DELETED"]
+          },
+          "imageMetadataList": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ImageMetadata" }
+          }
+        },
+        "required": [
+          "categoryId",
+          "productDescription",
+          "productName",
+          "productPrice",
+          "productStock"
+        ]
+      },
+      "ProductDTO": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "productStatus": {
+            "type": "string",
+            "enum": ["PENDING", "APPROVED", "REJECTED", "PAUSED", "DELETED"]
+          },
+          "submitDate": { "type": "string", "format": "date-time" }
+        }
+      },
+      "SellerUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "sellerName": { "type": "string", "minLength": 1 },
+          "sellerIntro": { "type": "string", "minLength": 1 }
+        },
+        "required": ["sellerIntro", "sellerName"]
+      },
+      "ProductImageResponse": {
+        "type": "object",
+        "properties": {
+          "imageId": { "type": "string", "format": "uuid" },
+          "imageUrl": { "type": "string" },
+          "altText": { "type": "string" },
+          "imageSequence": { "type": "integer", "format": "int32" }
+        }
+      },
+      "ProductResponse": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "productDescription": { "type": "string" },
+          "sellerName": { "type": "string" },
+          "isA11yGuarantee": { "type": "boolean" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "productImages": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ProductImageResponse" }
+          },
+          "parentCategoryId": { "type": "string", "format": "uuid" },
+          "categoryId": { "type": "string", "format": "uuid" },
+          "categoryName": { "type": "string" }
+        }
+      },
+      "SellerInfoResponse": {
+        "type": "object",
+        "properties": {
+          "sellerId": { "type": "string", "format": "uuid" },
+          "sellerName": { "type": "string" },
+          "businessNumber": { "type": "string" },
+          "sellerIntro": { "type": "string" },
+          "sellerEmail": { "type": "string" },
+          "sellerPhone": { "type": "string" },
+          "isA11yGuarantee": { "type": "boolean" },
+          "sellerGrade": {
+            "type": "string",
+            "enum": ["NEWER", "REGULAR", "TRUSTED"]
+          },
+          "products": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ProductResponse" }
+          }
+        }
+      },
+      "OrderRequestItem": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "string" },
+          "quantity": { "type": "integer", "format": "int32" }
+        }
+      },
+      "OrderSheetRequest": {
+        "type": "object",
+        "properties": {
+          "cartItemIds": { "type": "array", "items": { "type": "string" } },
+          "directOrderItem": {
+            "$ref": "#/components/schemas/OrderRequestItem"
+          },
+          "fromCart": { "type": "boolean" }
+        }
+      },
+      "CartItemDto": {
+        "type": "object",
+        "properties": {
+          "cartItemId": { "type": "string", "format": "uuid" },
+          "cartId": { "type": "string", "format": "uuid" },
+          "productId": { "type": "string", "format": "uuid" },
+          "sellerId": { "type": "string", "format": "uuid" },
+          "sellerName": { "type": "string" },
+          "productName": { "type": "string" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "categoryName": { "type": "string" },
+          "quantity": { "type": "integer", "format": "int32" },
+          "productImageUrl": { "type": "string" }
+        }
+      },
+      "OrderSheetResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/CartItemDto" }
+          },
+          "totalAmount": { "type": "integer", "format": "int32" },
+          "shippingFee": { "type": "integer", "format": "int32" },
+          "finalAmount": { "type": "integer", "format": "int32" }
+        }
+      },
+      "OrderConfirmRequest": {
+        "type": "object",
+        "properties": { "orderItemId": { "type": "string", "minLength": 1 } },
+        "required": ["orderItemId"]
+      },
+      "OrderCancelRequest": {
+        "type": "object",
+        "properties": {
+          "orderItemId": { "type": "string", "minLength": 1 },
+          "reason": { "type": "string", "minLength": 1 }
+        },
+        "required": ["orderItemId", "reason"]
+      },
+      "UserA11yProfileResponse": {
+        "type": "object",
+        "properties": {
+          "profileId": { "type": "string", "format": "uuid" },
+          "profileName": { "type": "string" },
+          "description": { "type": "string" },
+          "contrastLevel": { "type": "integer", "format": "int32" },
+          "textSizeLevel": { "type": "integer", "format": "int32" },
+          "textSpacingLevel": { "type": "integer", "format": "int32" },
+          "lineHeightLevel": { "type": "integer", "format": "int32" },
+          "textAlign": { "type": "string" },
+          "screenReader": { "type": "boolean" },
+          "smartContrast": { "type": "boolean" },
+          "highlightLinks": { "type": "boolean" },
+          "cursorHighlight": { "type": "boolean" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "SellerProductRegisterRequest": {
+        "type": "object",
+        "description": "Product registration data",
+        "properties": {
+          "productName": { "type": "string", "minLength": 1 },
+          "productDescription": { "type": "string", "minLength": 1 },
+          "categoryId": { "type": "string", "minLength": 1 },
+          "productPrice": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "productStock": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "imageMetadataList": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ImageMetadata" }
+          }
+        },
+        "required": [
+          "categoryId",
+          "productDescription",
+          "productName",
+          "productPrice",
+          "productStock"
+        ]
+      },
+      "ProductDetailResponse": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "sellerId": { "type": "string", "format": "uuid" },
+          "sellerName": { "type": "string" },
+          "sellerGrade": {
+            "type": "string",
+            "enum": ["NEWER", "REGULAR", "TRUSTED"]
+          },
+          "isA11yGuarantee": { "type": "boolean" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "productStatus": {
+            "type": "string",
+            "enum": ["PENDING", "APPROVED", "REJECTED", "PAUSED", "DELETED"]
+          },
+          "productDescription": { "type": "string" },
+          "productStock": { "type": "integer", "format": "int32" },
+          "productImages": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ProductImageResponse" }
+          },
+          "categoryId": { "type": "string", "format": "uuid" },
+          "categoryName": { "type": "string" },
+          "summaryText": { "type": "string" },
+          "usageContext": { "type": "string" },
+          "submitDate": { "type": "string", "format": "date-time" },
+          "usageMethod": { "type": "string" }
+        }
+      },
+      "SellerOrderClaimProcessRequest": {
+        "type": "object",
+        "properties": {
+          "action": { "type": "string", "enum": ["APPROVED", "REJECTED"] }
+        },
+        "required": ["action"]
+      },
+      "SellerApplyRequest": {
+        "type": "object",
+        "properties": {
+          "sellerName": { "type": "string", "minLength": 1 },
+          "businessNumber": { "type": "string", "minLength": 1 },
+          "sellerIntro": { "type": "string" }
+        },
+        "required": ["businessNumber", "sellerName"]
+      },
+      "SellerApplyResponse": {
+        "type": "object",
+        "properties": {
+          "sellerId": { "type": "string", "format": "uuid" },
+          "sellerName": { "type": "string" },
+          "userName": { "type": "string" },
+          "userEmail": { "type": "string" },
+          "userPhone": { "type": "string" },
+          "businessNumber": { "type": "string" },
+          "sellerGrade": {
+            "type": "string",
+            "enum": ["NEWER", "REGULAR", "TRUSTED"]
+          },
+          "sellerIntro": { "type": "string" },
+          "a11yGuarantee": { "type": "boolean" },
+          "sellerSubmitStatus": {
+            "type": "string",
+            "enum": ["PENDING", "APPROVED", "REJECTED"]
+          },
+          "submitDate": { "type": "string", "format": "date-time" },
+          "approvedDate": { "type": "string", "format": "date-time" }
+        }
+      },
+      "PaymentVerifyRequest": {
+        "type": "object",
+        "properties": {
+          "orderId": { "type": "string" },
+          "amount": { "type": "integer", "format": "int32" },
+          "method": { "type": "string", "minLength": 1 },
+          "paymentKey": { "type": "string" },
+          "impUid": { "type": "string" },
+          "cartItemIdsToDelete": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["method"]
+      },
+      "PaymentVerifyResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": { "type": "string", "format": "uuid" },
+          "status": { "type": "string" },
+          "amount": { "type": "integer", "format": "int32" },
+          "paidAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "OrderCreateRequest": {
+        "type": "object",
+        "properties": {
+          "addressId": { "type": "string" },
+          "cartItemIds": { "type": "array", "items": { "type": "string" } },
+          "directOrderItem": {
+            "$ref": "#/components/schemas/OrderRequestItem"
+          },
+          "fromCart": { "type": "boolean" }
+        }
+      },
+      "OrderItemResponse": {
+        "type": "object",
+        "properties": {
+          "orderItemId": { "type": "string", "format": "uuid" },
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "categoryName": { "type": "string" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "productQuantity": { "type": "integer", "format": "int32" },
+          "productTotalPrice": { "type": "integer", "format": "int32" },
+          "productImageUrl": { "type": "string" },
+          "orderItemStatus": {
+            "type": "string",
+            "enum": [
+              "ORDERED",
+              "PAID",
+              "REJECTED",
+              "ACCEPTED",
+              "SHIPPING",
+              "SHIPPED",
+              "CONFIRMED",
+              "CANCEL_PENDING",
+              "CANCELED",
+              "CANCEL_REJECTED",
+              "RETURN_PENDING",
+              "RETURNED",
+              "RETURN_REJECTED"
+            ]
+          },
+          "cancelReason": { "type": "string" }
+        }
+      },
+      "OrderResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": { "type": "string", "format": "uuid" },
+          "totalPrice": { "type": "integer", "format": "int32" },
+          "orderItems": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/OrderItemResponse" }
+          },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "CartAddRequest": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "string", "minLength": 1 },
+          "quantity": { "type": "integer", "format": "int32", "minimum": 1 }
+        },
+        "required": ["productId", "quantity"]
+      },
+      "CartItemUpdatedResponse": {
+        "type": "object",
+        "properties": {
+          "cartItemId": { "type": "string", "format": "uuid" },
+          "cartId": { "type": "string", "format": "uuid" },
+          "productId": { "type": "string", "format": "uuid" },
+          "quantity": { "type": "integer", "format": "int32" }
+        }
+      },
+      "RefreshRequest": {
+        "type": "object",
+        "properties": { "refreshToken": { "type": "string" } },
+        "required": ["refreshToken"]
+      },
+      "JwtResponse": {
+        "type": "object",
+        "properties": {
+          "accessToken": { "type": "string" },
+          "refreshToken": { "type": "string" }
+        }
+      },
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "email": { "type": "string" },
+          "password": { "type": "string" }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "user": { "$ref": "#/components/schemas/UserInfo" },
+          "accessToken": { "type": "string" },
+          "refreshToken": { "type": "string" }
+        }
+      },
+      "UserInfo": {
+        "type": "object",
+        "properties": {
+          "userEmail": { "type": "string" },
+          "userNickname": { "type": "string" },
+          "userRole": {
+            "type": "string",
+            "enum": ["USER", "SELLER", "ADMIN", "TEMP"]
+          }
+        }
+      },
+      "KakaoSignUpRequest": {
+        "type": "object",
+        "properties": {
+          "userEmail": { "type": "string", "minLength": 1 },
+          "userName": { "type": "string", "minLength": 1 },
+          "userNickname": { "type": "string" },
+          "userPhone": {
+            "type": "string",
+            "maxLength": 15,
+            "minLength": 10,
+            "pattern": "^[0-9]{10,15}$"
+          }
+        },
+        "required": ["userEmail", "userName", "userPhone"]
+      },
+      "UserResponse": {
+        "type": "object",
+        "properties": {
+          "userId": { "type": "string", "format": "uuid" },
+          "userName": { "type": "string" },
+          "userEmail": { "type": "string" },
+          "userPhone": { "type": "string" },
+          "userNickname": { "type": "string" },
+          "userRole": {
+            "type": "string",
+            "enum": ["USER", "SELLER", "ADMIN", "TEMP"]
+          },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" },
+          "sellerSubmitStatus": {
+            "type": "string",
+            "enum": ["PENDING", "APPROVED", "REJECTED"]
+          }
+        }
+      },
+      "JoinRequest": {
+        "type": "object",
+        "properties": {
+          "userEmail": { "type": "string", "minLength": 1 },
+          "userPass": {
+            "type": "string",
+            "maxLength": 2147483647,
+            "minLength": 8
+          },
+          "userName": { "type": "string", "minLength": 1 },
+          "userNickname": { "type": "string" },
+          "userPhone": { "type": "string", "maxLength": 15, "minLength": 10 }
+        },
+        "required": ["userEmail", "userName", "userPass"]
+      },
+      "UserUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "userName": { "type": "string", "maxLength": 30, "minLength": 2 },
+          "userEmail": { "type": "string", "maxLength": 50, "minLength": 0 },
+          "userPhone": { "type": "string", "pattern": "^\\d+$" },
+          "userNickname": { "type": "string", "maxLength": 20, "minLength": 2 }
+        }
+      },
+      "DefaultAddressRequest": {
+        "type": "object",
+        "properties": { "addressId": { "type": "string" } },
+        "required": ["addressId"]
+      },
+      "SellerProductStockUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "productStock": { "type": "integer", "format": "int32", "minimum": 0 }
+        },
+        "required": ["productStock"]
+      },
+      "SellerOrderItemsStatusUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ORDERED",
+              "PAID",
+              "REJECTED",
+              "ACCEPTED",
+              "SHIPPING",
+              "SHIPPED",
+              "CONFIRMED",
+              "CANCEL_PENDING",
+              "CANCELED",
+              "CANCEL_REJECTED",
+              "RETURN_PENDING",
+              "RETURNED",
+              "RETURN_REJECTED"
+            ]
+          }
+        },
+        "required": ["status"]
+      },
+      "CartQtyUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "quantity": { "type": "integer", "format": "int32", "minimum": 1 }
+        },
+        "required": ["quantity"]
+      },
+      "AdminSellerUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "sellerName": { "type": "string" },
+          "businessNumber": { "type": "string" },
+          "sellerGrade": {
+            "type": "string",
+            "enum": ["NEWER", "REGULAR", "TRUSTED"]
+          },
+          "sellerIntro": { "type": "string" },
+          "a11yGuarantee": { "type": "boolean" }
+        }
+      },
+      "OrderDetailResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": { "type": "string", "format": "uuid" },
+          "userName": { "type": "string" },
+          "userEmail": { "type": "string" },
+          "userPhone": { "type": "string" },
+          "receiverName": { "type": "string" },
+          "receiverPhone": { "type": "string" },
+          "receiverZipcode": { "type": "string" },
+          "receiverAddr1": { "type": "string" },
+          "receiverAddr2": { "type": "string" },
+          "totalPrice": { "type": "integer", "format": "int32" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "orderItem": { "$ref": "#/components/schemas/OrderItemResponse" }
+        }
+      },
+      "SellerInquireProductRequest": {
+        "type": "object",
+        "properties": {
+          "page": { "type": "integer", "format": "int32" },
+          "size": { "type": "integer", "format": "int32" }
+        }
+      },
+      "ProductInquireResponse": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "productStock": { "type": "integer", "format": "int32" },
+          "productStatus": {
+            "type": "string",
+            "enum": ["PENDING", "APPROVED", "REJECTED", "PAUSED", "DELETED"]
+          },
+          "categoryName": { "type": "string" },
+          "approvedAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "SellerOrderSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "newOrders": { "type": "integer", "format": "int64" },
+          "acceptedOrders": { "type": "integer", "format": "int64" },
+          "shippingOrders": { "type": "integer", "format": "int64" },
+          "completedOrders": { "type": "integer", "format": "int64" },
+          "claimedOrders": { "type": "integer", "format": "int64" }
+        }
+      },
+      "SellerOrderInquireResponse": {
+        "type": "object",
+        "properties": {
+          "orderItems": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/SellerOrderItemResponse" }
+          },
+          "totalOrderCount": { "type": "integer", "format": "int32" }
+        }
+      },
+      "SellerOrderItemResponse": {
+        "type": "object",
+        "properties": {
+          "orderItemId": { "type": "string", "format": "uuid" },
+          "orderId": { "type": "string", "format": "uuid" },
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "productQuantity": { "type": "integer", "format": "int32" },
+          "orderItemStatus": {
+            "type": "string",
+            "enum": [
+              "ORDERED",
+              "PAID",
+              "REJECTED",
+              "ACCEPTED",
+              "SHIPPING",
+              "SHIPPED",
+              "CONFIRMED",
+              "CANCEL_PENDING",
+              "CANCELED",
+              "CANCEL_REJECTED",
+              "RETURN_PENDING",
+              "RETURNED",
+              "RETURN_REJECTED"
+            ]
+          },
+          "buyerName": { "type": "string" },
+          "buyerEmail": { "type": "string" },
+          "buyerPhone": { "type": "string" },
+          "orderedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "SellerTopProductResponse": {
+        "type": "object",
+        "properties": {
+          "sellerId": { "type": "string", "format": "uuid" },
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "productImageUrl": { "type": "string" },
+          "orderCount": { "type": "integer", "format": "int64" },
+          "totalQuantitySold": { "type": "integer", "format": "int64" },
+          "totalSalesAmount": { "type": "number" },
+          "salesRank": { "type": "integer", "format": "int32" }
+        }
+      },
+      "SellerDashboardResponse": {
+        "type": "object",
+        "properties": {
+          "sellerId": { "type": "string", "format": "uuid" },
+          "sellerName": { "type": "string" },
+          "sellerIntro": { "type": "string" },
+          "totalRevenue": { "type": "number" },
+          "totalOrderCount": { "type": "integer", "format": "int64" },
+          "refundRate": { "type": "number" },
+          "confirmedRate": { "type": "number" }
+        }
+      },
+      "DailyRevenueDto": {
+        "type": "object",
+        "properties": {
+          "orderDate": { "type": "string", "format": "date-time" },
+          "dailyRevenue": { "type": "number" }
+        }
+      },
+      "MonthlyPopularProduct": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "productPrice": { "type": "number" },
+          "productImageUrl": { "type": "string" },
+          "categoryId": { "type": "string", "format": "uuid" },
+          "categoryName": { "type": "string" },
+          "sellerId": { "type": "string", "format": "uuid" },
+          "monthlySalesVolume": { "type": "integer", "format": "int64" },
+          "monthlyOrderCount": { "type": "integer", "format": "int64" },
+          "ranking": { "type": "integer", "format": "int32" }
+        }
+      },
+      "CatProductInfo": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "productImageUrl": { "type": "string" }
+        }
+      },
+      "CategoryRecommendResponse": {
+        "type": "object",
+        "properties": {
+          "categoryId": { "type": "string", "format": "uuid" },
+          "categoryName": { "type": "string" },
+          "products": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/CatProductInfo" }
+          }
+        }
+      },
+      "EventResponse": {
+        "type": "object",
+        "properties": {
+          "eventTitle": { "type": "string" },
+          "eventDescription": { "type": "string" },
+          "eventImageUrl": { "type": "string" },
+          "eventUrl": { "type": "string" }
+        }
+      },
+      "CategoryResponse": {
+        "type": "object",
+        "properties": {
+          "categoryId": { "type": "string", "format": "uuid" },
+          "categoryName": { "type": "string" }
+        }
+      },
+      "CartItemListDto": {
+        "type": "object",
+        "properties": {
+          "sellerName": { "type": "string" },
+          "sellerId": { "type": "string", "format": "uuid" },
+          "groupTotal": { "type": "integer", "format": "int32" },
+          "items": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/CartItemDto" }
+          }
+        }
+      },
+      "CartItemListResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/CartItemListDto" }
+          },
+          "total": { "type": "integer", "format": "int32" }
+        }
+      },
+      "CartItemCountResponse": {
+        "type": "object",
+        "properties": { "count": { "type": "integer", "format": "int32" } }
+      },
+      "CheckExistsResponse": {
+        "type": "object",
+        "properties": {
+          "isAvailable": {
+            "type": "string",
+            "enum": ["AVAILABLE", "UNAVAILABLE"]
+          }
+        }
+      },
+      "UserAdminResponse": {
+        "type": "object",
+        "properties": {
+          "userId": { "type": "string", "format": "uuid" },
+          "userName": { "type": "string" },
+          "userEmail": { "type": "string" },
+          "userNickname": { "type": "string" },
+          "userRole": {
+            "type": "string",
+            "enum": ["USER", "SELLER", "ADMIN", "TEMP"]
+          },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "SellerProfileResponse": {
+        "type": "object",
+        "properties": {
+          "sellerId": { "type": "string", "format": "uuid" },
+          "sellerName": { "type": "string" },
+          "businessNumber": { "type": "string" },
+          "sellerGrade": {
+            "type": "string",
+            "enum": ["NEWER", "REGULAR", "TRUSTED"]
+          },
+          "contactEmail": { "type": "string" },
+          "contactPhone": { "type": "string" },
+          "storeIntro": { "type": "string" },
+          "isA11yGuarantee": { "type": "boolean" },
+          "profileStatus": {
+            "type": "string",
+            "enum": ["PENDING", "APPROVED", "REJECTED"]
+          },
+          "submitDate": { "type": "string", "format": "date-time" },
+          "approvedDate": { "type": "string", "format": "date-time" },
+          "lastUpdatedDate": { "type": "string", "format": "date-time" }
+        }
+      },
+      "SellerDetailResponse": {
+        "type": "object",
+        "properties": {
+          "sellerId": { "type": "string", "format": "uuid" },
+          "sellerName": { "type": "string" },
+          "businessNumber": { "type": "string" },
+          "sellerGrade": {
+            "type": "string",
+            "enum": ["NEWER", "REGULAR", "TRUSTED"]
+          },
+          "contactEmail": { "type": "string" },
+          "contactPhone": { "type": "string" },
+          "storeIntro": { "type": "string" },
+          "isA11yGuarantee": { "type": "boolean" },
+          "profileStatus": {
+            "type": "string",
+            "enum": ["PENDING", "APPROVED", "REJECTED"]
+          },
+          "submitDate": { "type": "string", "format": "date-time" },
+          "approvedDate": { "type": "string", "format": "date-time" },
+          "lastUpdatedDate": { "type": "string", "format": "date-time" },
+          "orders": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/OrderItemResponse" }
+          },
+          "products": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/ProductInquireResponse" }
+          }
+        }
+      },
+      "AdminProductsResponse": {
+        "type": "object",
+        "properties": {
+          "totalCount": { "type": "integer", "format": "int32" },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductAdminInquireResponse"
+            }
+          }
+        }
+      },
+      "ProductAdminInquireResponse": {
+        "type": "object",
+        "properties": {
+          "productId": { "type": "string", "format": "uuid" },
+          "productName": { "type": "string" },
+          "sellerId": { "type": "string", "format": "uuid" },
+          "sellerName": { "type": "string" },
+          "sellerGrade": {
+            "type": "string",
+            "enum": ["NEWER", "REGULAR", "TRUSTED"]
+          },
+          "isA11yGuarantee": { "type": "boolean" },
+          "productPrice": { "type": "integer", "format": "int32" },
+          "productStatus": {
+            "type": "string",
+            "enum": ["PENDING", "APPROVED", "REJECTED", "PAUSED", "DELETED"]
+          },
+          "productDescription": { "type": "string" },
+          "productStock": { "type": "integer", "format": "int32" },
+          "categoryId": { "type": "string", "format": "uuid" },
+          "categoryName": { "type": "string" },
+          "submitDate": { "type": "string", "format": "date-time" }
+        }
+      },
+      "AdminOrderSearchRequest": {
+        "type": "object",
+        "properties": {
+          "searchType": { "type": "string" },
+          "keyword": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["PENDING", "PAID", "DEPRECATED"]
+          },
+          "startDate": { "type": "string" },
+          "endDate": { "type": "string" }
+        }
+      },
+      "AdminOrderResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": { "type": "string", "format": "uuid" },
+          "userName": { "type": "string" },
+          "userEmail": { "type": "string" },
+          "userPhone": { "type": "string" },
+          "receiverName": { "type": "string" },
+          "receiverPhone": { "type": "string" },
+          "receiverZipcode": { "type": "string" },
+          "receiverAddr1": { "type": "string" },
+          "receiverAddr2": { "type": "string" },
+          "totalPrice": { "type": "integer", "format": "int32" },
+          "items": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/OrderItemResponse" }
+          },
+          "createdAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "AdminDashboardStats": {
+        "type": "object",
+        "properties": {
+          "pendingSellerCount": { "type": "integer", "format": "int32" },
+          "pendingProductCount": { "type": "integer", "format": "int32" }
+        }
+      },
+      "UserDeleteRequest": {
+        "type": "object",
+        "properties": { "userPassword": { "type": "string" } }
+      },
+      "CartItemDeleteRequest": {
+        "type": "object",
+        "properties": {
+          "itemIds": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1
+          }
+        },
+        "required": ["itemIds"]
+      }
+    },
+    "securitySchemes": {
+      "JWT": {
+        "type": "http",
+        "description": "JWT 토큰을 입력하세요.",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

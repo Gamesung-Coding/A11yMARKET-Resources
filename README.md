@@ -16,7 +16,7 @@
 
 ### 주요 문서 (External URL)
 
-- **문서/다이어그램:** [Outline-문서-HUB](./5.기타자료/diagrams.md)
+- **다이어그램:** [Diagrams](./5.기타자료/diagrams.md)
 - **WBS, Kanban Board:** [Notion-WBS](https://ember-sting-f59.notion.site/294de38d02db806d8727df964e707e27?v=294de38d02db8061b928000cfdd28be6&source=copy_link)
 - **Requirement List:** [Notion-Database](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
 - **요구명세:** [Notion-Requirement-Specification](https://ember-sting-f59.notion.site/29cde38d02db80fb8029df003f127638?v=29cde38d02db80e6a409000c9d00fe1a&source=copy_link)
